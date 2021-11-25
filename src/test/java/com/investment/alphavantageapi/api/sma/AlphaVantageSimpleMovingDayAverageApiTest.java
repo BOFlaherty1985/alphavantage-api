@@ -1,4 +1,4 @@
-package com.investment.alphavantageapi.api;
+package com.investment.alphavantageapi.api.sma;
 
 import com.investment.alphavantageapi.api.sma.AlphaVantageSimpleMovingDayAverageApi;
 import com.investment.alphavantageapi.model.sma.MetaData;
