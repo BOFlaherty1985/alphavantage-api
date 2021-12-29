@@ -20,9 +20,12 @@ public class AlphaVantageSimpleMovingDayAverageApi implements SimpleMovingDayAve
     public SimpleMovingDayAverageData getSimpleMovingDayAverageFor(String ticker) {
 
         ResponseEntity<SimpleMovingDayAverageData> result
-                = restTemplate.getForEntity("http://localhost:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class);
+                = restTemplate.getForEntity("http://alphavantage:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class);
 
         SimpleMovingDayAverageData response = result.getBody();
-        return SimpleMovingDayAverageData.builder().metaData(response.getMetaData()).technicalAnalysis(response.getTechnicalAnalysis()).build();
+        return SimpleMovingDayAverageData.builder()
+                .metaData(response.getMetaData())
+                .technicalAnalysis(response.getTechnicalAnalysis())
+                .build();
     }
 }
