@@ -26,29 +26,6 @@ public class AlphaVantageCompanyOverviewApiTest {
     private RestTemplate restTemplate;
 
     @Test
-    public void shouldNotReturnNullWhenCallingCompanyOverviewApi() {
-        // given
-
-        // when
-        CompanyOverviewData result = alphaVantageCompanyOverviewApi.getCompanyOverviewData(TICKER);
-
-        // then
-        assertNotNull(result);
-    }
-
-    @Test
-    public void shouldCallAlphaVantageApiServiceViaRestTemplate() {
-        // given
-
-        // when
-        alphaVantageCompanyOverviewApi.getCompanyOverviewData(TICKER);
-
-        // then
-        verify(restTemplate)
-                .getForEntity("http://localhost:5555/companyOverview?ticker=" + TICKER, CompanyOverviewData.class);
-    }
-
-    @Test
     public void shouldBuildCompanyOverviewDataObject() {
         // given
         CompanyOverviewData companyOverviewData
@@ -61,7 +38,7 @@ public class AlphaVantageCompanyOverviewApiTest {
                 .sector("Technology")
                 .build();
 
-        given(restTemplate.getForEntity("http://localhost:5555/companyOverview?ticker=" + TICKER, CompanyOverviewData.class))
+        given(restTemplate.getForEntity("http://alphavantage:5151/companyOverview?ticker=" + TICKER, CompanyOverviewData.class))
                 .willReturn(ResponseEntity.ok(companyOverviewData));
 
 

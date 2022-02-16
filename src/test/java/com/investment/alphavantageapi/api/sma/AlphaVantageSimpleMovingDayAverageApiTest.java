@@ -44,7 +44,7 @@ public class AlphaVantageSimpleMovingDayAverageApiTest {
                         .build())
                 .build();
 
-        when(restTemplate.getForEntity("http://localhost:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class))
+        when(restTemplate.getForEntity("http://alphavantage:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class))
                 .thenReturn(ResponseEntity.ok(smaData));
 
         SimpleMovingDayAverageData result = alphaVantageApi.getSimpleMovingDayAverageFor(ticker);
@@ -52,6 +52,6 @@ public class AlphaVantageSimpleMovingDayAverageApiTest {
         assertEquals(ticker, result.getMetaData().getSymbol());
         assertEquals(indicator, result.getMetaData().getIndicator());
         assertNotNull(result.getTechnicalAnalysis());
-        verify(restTemplate).getForEntity("http://localhost:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class);
+        verify(restTemplate).getForEntity("http://alphavantage:5151/simpleMovingDayAverage?ticker=" + ticker, SimpleMovingDayAverageData.class);
     }
 }

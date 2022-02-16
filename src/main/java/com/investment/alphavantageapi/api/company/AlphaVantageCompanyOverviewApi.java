@@ -18,8 +18,7 @@ public class AlphaVantageCompanyOverviewApi implements CompanyOverviewApi {
 
     @Override
     public CompanyOverviewData getCompanyOverviewData(String ticker) {
-
-        ResponseEntity result = restTemplate.getForEntity("http://alphavantage:5151/companyOverview?ticker=" + ticker,
+        ResponseEntity result = restTemplate.getForEntity(String.format("http://alphavantage:5151/companyOverview?ticker=%s", ticker),
                 CompanyOverviewData.class);
 
         CompanyOverviewData companyOverviewData = (CompanyOverviewData) result.getBody();
